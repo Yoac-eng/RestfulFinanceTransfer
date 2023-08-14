@@ -1,5 +1,6 @@
-package entities;
+package com.picpaychallenge.picpaychallenge.entities;
 
+import com.picpaychallenge.picpaychallenge.enums.UserType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.mindrot.jbcrypt.BCrypt;
@@ -13,18 +14,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private UserType userType;
     private String name;
+    @Column(unique = true)
     private String cpf;
+    @Column(unique = true)
     private String cnpj;
+    @Column(unique = true)
     private String email;
-    private String passwordHash;
+    private String password;
     private Double wallet;
 
     // Methods that will encrypt the password and check it when needed
     public void setPassword(String password) {
-        this.passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
     public boolean verifyPassword(String password) {
-        return BCrypt.checkpw(password, this.passwordHash);
+        return BCrypt.checkpw(password, this.password);
     }
 }
