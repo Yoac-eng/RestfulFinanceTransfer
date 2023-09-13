@@ -8,6 +8,13 @@ import lombok.EqualsAndHashCode;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+
+/**
+ * Class that maps the transfers table.
+ *
+ * @author Cayo Cutrim, 17/08/2023
+ *
+ */
 @Entity
 @Table(name = "transfers")
 @Data
@@ -15,7 +22,7 @@ import java.time.LocalDateTime;
 public class Transfer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private BigDecimal amount;

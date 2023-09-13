@@ -1,4 +1,4 @@
-CREATE TABLE users (
+ CREATE TABLE users (
     id BIGINT PRIMARY KEY,
     user_type VARCHAR(255) NOT NULL,
     name VARCHAR(255),

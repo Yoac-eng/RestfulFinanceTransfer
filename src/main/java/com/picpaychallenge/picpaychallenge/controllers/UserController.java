@@ -1,17 +1,22 @@
 package com.picpaychallenge.picpaychallenge.controllers;
 
+import com.picpaychallenge.picpaychallenge.entities.User;
 import com.picpaychallenge.picpaychallenge.services.UserService;
-import dto.UserDTO;
+import com.picpaychallenge.picpaychallenge.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Default controller to handle User related requests.
+ *
+ * @author Cayo Cutrim, 17/08/2023
+ *
+ */
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
@@ -19,12 +24,33 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/")
+    /**
+     * Return all the users registered.
+     *
+     * @return List<UserDTO> A list containing all the registered UsersDTOs.
+     */
+    @GetMapping
     public List<UserDTO> findAll(){
         List<UserDTO> result = userService.findAll();
         return result;
     }
 
+    /**
+     * Create a new user.
+     * @param newUser The user object containing the details of the user to be created.
+     * @return ResponseEntity<UserDTO> The ResponseEntity containing the newly created UserDTO.
+     */
+    @PostMapping
+    public ResponseEntity<UserDTO> newUser(@RequestBody User newUser){
+        UserDTO result = userService.save(newUser);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
+    /**
+     * Find a user by id.
+     * @param id The id of the user to be searched.
+     * @return ResponseEntity<UserDTO> The ResponseEntity containing the searched by id UserDTO.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Long id){
         try {
@@ -35,4 +61,5 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

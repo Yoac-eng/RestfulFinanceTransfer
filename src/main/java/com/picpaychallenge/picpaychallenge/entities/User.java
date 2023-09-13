@@ -8,6 +8,12 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Class that maps the users table.
+ *
+ * @author Cayo Cutrim, 17/08/2023
+ *
+ */
 @Entity
 @Table(name = "users")
 @Data
@@ -15,7 +21,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
