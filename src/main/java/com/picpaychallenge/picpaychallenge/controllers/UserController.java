@@ -1,8 +1,8 @@
 package com.picpaychallenge.picpaychallenge.controllers;
 
-import com.picpaychallenge.picpaychallenge.entities.User;
+import com.picpaychallenge.picpaychallenge.models.User;
 import com.picpaychallenge.picpaychallenge.services.UserService;
-import com.picpaychallenge.picpaychallenge.dto.UserDTO;
+import com.picpaychallenge.picpaychallenge.models.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +14,8 @@ import java.util.NoSuchElementException;
 /**
  * Default controller to handle User related requests.
  *
- * @author Cayo Cutrim, 17/08/2023
- *
+ * @author Cayo Cutrim
+ * @since 17/08/2023
  */
 @RestController
 @RequestMapping(value = "/users")

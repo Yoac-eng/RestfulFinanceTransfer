@@ -1,8 +1,7 @@
-package com.picpaychallenge.picpaychallenge.dto;
+package com.picpaychallenge.picpaychallenge.models.dto;
 
-import com.picpaychallenge.picpaychallenge.entities.User;
-import com.picpaychallenge.picpaychallenge.enums.UserType;
-import jakarta.persistence.*;
+import com.picpaychallenge.picpaychallenge.models.User;
+import com.picpaychallenge.picpaychallenge.models.enums.UserType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +13,8 @@ import java.math.BigDecimal;
 /**
  * User DTO class.
  *
- * @author Cayo Cutrim, 17/08/2023
- *
+ * @author Cayo Cutrim
+ * @since 17/08/2023
  */
 @Getter
 @Setter

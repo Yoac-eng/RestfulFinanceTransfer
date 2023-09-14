@@ -1,4 +1,4 @@
-package com.picpaychallenge.picpaychallenge.entities;
+package com.picpaychallenge.picpaychallenge.models;
 
 
 import jakarta.persistence.*;
@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 /**
  * Class that maps the transfers table.
  *
- * @author Cayo Cutrim, 17/08/2023
- *
+ * @author Cayo Cutrim
+ * @since 17/08/2023
  */
 @Entity
 @Table(name = "transfers")

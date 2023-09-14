@@ -1,18 +1,17 @@
-package com.picpaychallenge.picpaychallenge.entities;
+package com.picpaychallenge.picpaychallenge.models;
 
-import com.picpaychallenge.picpaychallenge.enums.UserType;
+import com.picpaychallenge.picpaychallenge.models.enums.UserType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * Class that maps the users table.
  *
- * @author Cayo Cutrim, 17/08/2023
- *
+ * @author Cayo Cutrim
+ * @since 17/08/2023
  */
 @Entity
 @Table(name = "users")

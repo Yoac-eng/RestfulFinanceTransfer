@@ -4,11 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * Class created to treat exceptions that happens when a search doesn't get
- * a result.
+ * Class created to treat exceptions that happens when a invalid field
+ * is trying to be persisted.
  *
- * @author Cayo Cutrim, 23/08/2023
- *
+ * @author Cayo Cutrim
+ * @since 23/08/2023
  */
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class InvalidFieldException extends RuntimeException {
