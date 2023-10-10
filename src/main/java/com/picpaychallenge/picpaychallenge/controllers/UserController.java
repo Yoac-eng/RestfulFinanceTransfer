@@ -53,13 +53,19 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Long id){
-        try {
-            UserDTO result = userService.findById(id);
-            return ResponseEntity.ok(result);
-        }
-        catch(NoSuchElementException e) {
-            return ResponseEntity.notFound().build();
-        }
+        UserDTO result = userService.findById(id);
+        return ResponseEntity.ok(result);
+    }
+
+    /**
+     * Delete a user by id;
+     * @param id The id of the user to be deleted.
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

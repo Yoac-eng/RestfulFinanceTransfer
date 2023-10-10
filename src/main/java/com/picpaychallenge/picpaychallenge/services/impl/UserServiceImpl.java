@@ -28,6 +28,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public UserDTO findById(Long id){
+        User result = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found by the given id"));
+        return new UserDTO(result);
+    }
+
+    @Override
     public UserDTO save(User newUser){
         validate(newUser);
 
@@ -37,11 +45,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public UserDTO findById(Long id){
-        User result = userRepository.findById(id)
+    public void delete(Long id){
+        User entity = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found by the given id"));
-        return new UserDTO(result);
+
+        userRepository.delete(entity);
     }
 
     /**
@@ -67,6 +75,9 @@ public class UserServiceImpl implements UserService {
         }
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new DuplicateFieldException("Email address is already in use");
+        }
+        if(userRepository.existsByDocument(user.getDocument())){
+            throw new DuplicateFieldException("This document id is already in use");
         }
     }
 }

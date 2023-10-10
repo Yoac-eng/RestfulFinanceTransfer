@@ -22,7 +22,7 @@ public interface UserService {
      */
     public List<UserDTO> findAll();
     /**
-     * Find a user by id.
+     * Register a new user.
      * @param newUser A new user to be created.
      * @return UserDTO The created UserDTO.
      */
@@ -33,4 +33,10 @@ public interface UserService {
      * @return UserDTO The searched by ID userDTO.
      */
     public UserDTO findById(Long id);
+    /**
+     * Delete a user by id.
+     * @param id The id of the user to be deleted.
+     * @return
+     */
+    public void delete(Long id);
 }
