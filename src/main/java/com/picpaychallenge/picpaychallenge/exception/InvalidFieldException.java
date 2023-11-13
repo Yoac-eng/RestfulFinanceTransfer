@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * Class created to treat exceptions that happens when a invalid field
+ * Class created to treat exceptions that happens when an invalid field
  * is trying to be persisted.
  *
  * @author Cayo Cutrim
