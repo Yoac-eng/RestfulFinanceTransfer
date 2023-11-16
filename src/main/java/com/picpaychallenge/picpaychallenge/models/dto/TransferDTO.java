@@ -23,17 +23,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class TransferDTO {
 
-    private Long id;
     private BigDecimal amount;
-    private UserDTO sender;
-    private UserDTO receiver;
-    private LocalDateTime timestamp;
+    private Long senderId;
+    private Long receiverId;
 
-    public TransferDTO(Transfer entity){
-        id = entity.getId();
-        amount = entity.getAmount();
-        sender = new UserDTO(entity.getSender());
-        receiver = new UserDTO(entity.getReceiver());
-        timestamp = entity.getTimestamp();
-    }
 }

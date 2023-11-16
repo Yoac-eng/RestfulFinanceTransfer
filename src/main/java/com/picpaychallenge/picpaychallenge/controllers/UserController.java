@@ -22,7 +22,7 @@ import java.util.NoSuchElementException;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     /**
      * Return all the users registered.

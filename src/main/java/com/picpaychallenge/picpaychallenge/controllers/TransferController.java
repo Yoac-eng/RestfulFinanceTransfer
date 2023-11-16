@@ -1,12 +1,15 @@
 package com.picpaychallenge.picpaychallenge.controllers;
 
 
+import com.picpaychallenge.picpaychallenge.models.Transfer;
+import com.picpaychallenge.picpaychallenge.models.User;
 import com.picpaychallenge.picpaychallenge.models.dto.TransferDTO;
+import com.picpaychallenge.picpaychallenge.models.dto.UserDTO;
 import com.picpaychallenge.picpaychallenge.services.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,9 +27,25 @@ public class TransferController {
     @Autowired
     private TransferService transferService;
 
+    /**
+     * Return all the users registered.
+     *
+     * @return List<UserDTO> A list containing all the registered UsersDTOs.
+     */
     @GetMapping
     public List<TransferDTO> findAll(){
         List<TransferDTO> result = transferService.findAll();
         return result;
+    }
+
+    /**
+     * Make a new transfer.
+     * @param newTransfer The transfer object containing the details of the transfer to be created.
+     * @return ResponseEntity<TransferDTO> The ResponseEntity containing the newly created TransferDTO.
+     */
+    @PostMapping
+    public ResponseEntity<TransferDTO> newTransfer(@RequestBody TransferDTO newTransfer){
+        TransferDTO result = transferService.save(newTransfer);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 }
