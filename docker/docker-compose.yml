@@ -3,14 +3,14 @@ version: '3.8'
 services:
   postgres:
     image: postgres:latest
-    container_name: picpay_db
+    container_name: restfulfinance_db
     restart: unless-stopped
     ports:
       - "5432:5432"
     environment:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: picpay_db
+      POSTGRES_DB: restfulfinance_db
     volumes:
       - pgdata:/var/lib/postgresql/data
 
