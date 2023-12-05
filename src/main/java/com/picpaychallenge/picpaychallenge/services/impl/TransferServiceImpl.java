@@ -5,6 +5,7 @@ import com.picpaychallenge.picpaychallenge.models.dto.TransferDTO;
 import com.picpaychallenge.picpaychallenge.models.dto.TransferMapper;
 import com.picpaychallenge.picpaychallenge.models.repositories.TransferRepository;
 import com.picpaychallenge.picpaychallenge.services.TransferService;
+import com.picpaychallenge.picpaychallenge.services.utils.TransferUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,19 +19,26 @@ public class TransferServiceImpl implements TransferService {
     private TransferRepository transferRepository;
 
     @Autowired
+    private TransferUtils transferUtils;
+
+    @Autowired
     private TransferMapper transferMapper;
 
     @Override
     @Transactional(readOnly = true)
     public List<TransferDTO> findAll() {
-        List<TransferDTO> result = transferRepository.findAll().stream().map(t -> transferMapper.toDTO(t)).toList();
-        return result;
+        return transferRepository.findAll().stream().map(t -> transferMapper.toDTO(t)).toList();
     }
 
     @Override
+    @Transactional
     public TransferDTO save(TransferDTO newTransfer){
         Transfer transfer = transferMapper.toEntity(newTransfer);
-        TransferDTO result = transferMapper.toDTO(transferRepository.save(transfer));
-        return result;
+        transferUtils.isTransferViable(transfer);
+
+        transferUtils.performTransfer(transfer);
+
+        return transferMapper.toDTO(transferRepository.save(transfer));
     }
+
 }

@@ -1,14 +1,11 @@
 package com.picpaychallenge.picpaychallenge.models.dto;
 
-import com.picpaychallenge.picpaychallenge.models.Transfer;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * Transfer DTO class.
@@ -23,6 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class TransferDTO {
 
+    private Long id;
     private BigDecimal amount;
     private Long senderId;
     private Long receiverId;

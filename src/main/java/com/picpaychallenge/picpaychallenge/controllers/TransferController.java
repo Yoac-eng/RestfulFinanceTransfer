@@ -1,10 +1,7 @@
 package com.picpaychallenge.picpaychallenge.controllers;
 
 
-import com.picpaychallenge.picpaychallenge.models.Transfer;
-import com.picpaychallenge.picpaychallenge.models.User;
 import com.picpaychallenge.picpaychallenge.models.dto.TransferDTO;
-import com.picpaychallenge.picpaychallenge.models.dto.UserDTO;
 import com.picpaychallenge.picpaychallenge.services.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,7 +37,7 @@ public class TransferController {
 
     /**
      * Make a new transfer.
-     * @param newTransfer The transfer object containing the details of the transfer to be created.
+     * @param newTransfer The transferDTO object containing the details of the transfer to be created.
      * @return ResponseEntity<TransferDTO> The ResponseEntity containing the newly created TransferDTO.
      */
     @PostMapping

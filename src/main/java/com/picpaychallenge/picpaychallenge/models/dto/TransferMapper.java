@@ -8,6 +8,12 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+/**
+ * TransferMapper Class, used to map an entity into a dto and vice versa.
+ *
+ * @author Cayo Cutrim
+ * @since 16/11/2023
+ */
 @Component
 public class TransferMapper {
 
@@ -27,6 +33,7 @@ public class TransferMapper {
 
     public TransferDTO toDTO(Transfer transfer) {
         TransferDTO dto = new TransferDTO();
+        dto.setId(transfer.getId());
         dto.setAmount(transfer.getAmount());
         dto.setSenderId(transfer.getSender().getId());
         dto.setReceiverId(transfer.getReceiver().getId());
