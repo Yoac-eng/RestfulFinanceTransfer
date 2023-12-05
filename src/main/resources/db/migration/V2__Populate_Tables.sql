@@ -6,4 +6,4 @@ VALUES
 INSERT INTO transfers (id, amount, sender_id, receiver_id, timestamp)
 VALUES
     (1, 100.00, 1, 2, '2023-08-15 10:00:00'),
-    (2, 50.00, 2, 1, '2023-08-15 11:30:00');
+    (2, 50.00, 1, 2, '2023-08-15 11:30:00');

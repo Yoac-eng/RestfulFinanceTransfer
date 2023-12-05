@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDTO save(User newUser){
         validate(newUser);
 
@@ -45,6 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id){
         User entity = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found by the given id"));
